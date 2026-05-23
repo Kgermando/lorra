@@ -7,9 +7,7 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 import nodemailer from 'nodemailer';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import { mailConfig } from './mail.config';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -36,12 +34,12 @@ app.post('/api/contact', async (req, res) => {
   }
 
   const transporter = nodemailer.createTransport({
-    host: process.env['SMTP_HOST'] ?? 'mail.gandi.net',
-    port: Number(process.env['SMTP_PORT'] ?? 587),
+    host: mailConfig.smtp.host,
+    port: mailConfig.smtp.port,
     secure: false,
     auth: {
-      user: process.env['SMTP_USER'],
-      pass: process.env['SMTP_PASS'],
+      user: mailConfig.smtp.user,
+      pass: mailConfig.smtp.pass,
     },
   });
 
@@ -71,9 +69,9 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `"Lorra Medical" <${process.env['SMTP_USER']}>`,
-      to: process.env['CONTACT_EMAIL'],
-      replyTo: email ?? process.env['SMTP_USER'],
+      from: `"Lorra Medical" <${mailConfig.smtp.user}>`,
+      to: mailConfig.contactEmail,
+      replyTo: email ?? mailConfig.smtp.user,
       subject: `[Rendez-vous] ${service} — ${name}`,
       html: htmlBody,
     });
