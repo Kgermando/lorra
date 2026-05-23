@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "laura": {
+    "lorra": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -96,10 +96,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "laura:build:production"
+              "buildTarget": "lorra:build:production"
             },
             "development": {
-              "buildTarget": "laura:build:development"
+              "buildTarget": "lorra:build:development"
             }
           },
           "defaultConfiguration": "development"

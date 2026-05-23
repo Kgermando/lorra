@@ -49,7 +49,7 @@ app.post('/api/contact', async (req, res) => {
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;">
       <div style="background:#1a6bbd;padding:24px;text-align:center;">
         <h1 style="color:#fff;margin:0;font-size:22px;">Nouvelle demande de rendez-vous</h1>
-        <p style="color:#cde4ff;margin:6px 0 0;">Clinique Laura Medical</p>
+        <p style="color:#cde4ff;margin:6px 0 0;">Clinique Lorra Medical</p>
       </div>
       <div style="padding:24px;">
         <table style="width:100%;border-collapse:collapse;">
@@ -64,14 +64,14 @@ app.post('/api/contact', async (req, res) => {
         </div>
       </div>
       <div style="background:#f5f5f5;padding:12px 24px;text-align:center;font-size:12px;color:#999;">
-        Ce message a été envoyé depuis le formulaire de contact du site laura-medical.com
+        Ce message a été envoyé depuis le formulaire de contact du site lorra-medical.com
       </div>
     </div>
   `;
 
   try {
     await transporter.sendMail({
-      from: `"Laura Medical" <${process.env['SMTP_USER']}>`,
+      from: `"Lorra Medical" <${process.env['SMTP_USER']}>`,
       to: process.env['CONTACT_EMAIL'],
       replyTo: email ?? process.env['SMTP_USER'],
       subject: `[Rendez-vous] ${service} — ${name}`,
