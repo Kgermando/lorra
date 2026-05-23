@@ -4,9 +4,10 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express from 'express';
 import { join } from 'node:path';
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import { mailConfig } from './mail.config';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
@@ -19,7 +20,12 @@ app.use(express.json());
 /**
  * POST /api/contact — envoie un e-mail via Gandi SMTP
  */
-app.post('/api/contact', async (req, res) => {
+async function contactHandler(req: VercelRequest, res: VercelResponse): Promise<void> {
+  if (req.method !== 'POST') {
+    res.status(405).json({ error: 'Méthode non autorisée' });
+    return;
+  }
+
   const { name, phone, email, service, message } = req.body as {
     name: string;
     phone: string;
@@ -75,12 +81,14 @@ app.post('/api/contact', async (req, res) => {
       subject: `[Rendez-vous] ${service} — ${name}`,
       html: htmlBody,
     });
-    res.json({ success: true });
+    res.status(200).json({ success: true });
   } catch (err) {
     console.error('Erreur envoi e-mail:', err);
     res.status(500).json({ error: 'Échec de l\'envoi de l\'e-mail.' });
   }
-});
+}
+
+app.post('/api/contact', contactHandler as unknown as express.RequestHandler);
 
 /**
  * Serve static files from /browser
