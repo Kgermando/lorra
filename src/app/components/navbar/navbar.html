@@ -1,0 +1,107 @@
+<nav [class.scrolled]="scrolled()">
+  <div class="container nav-inner">
+    <a href="#accueil" class="logo-link" (click)="closeMenu()">
+      <img src="/images/logo.png" alt="Laura Medical Center" class="logo-img">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#accueil" (click)="closeMenu()">Accueil</a></li>
+      <li><a href="#apropos" (click)="closeMenu()">À Propos</a></li>
+      <li><a href="#services" (click)="closeMenu()">Services</a></li>
+      <li><a href="#equipe" (click)="closeMenu()">Équipe</a></li>
+      <li><a href="#equipement" (click)="closeMenu()">Équipement</a></li>
+      <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary nav-cta" (click)="closeMenu()">
+        <span class="material-icons-round" aria-hidden="true">calendar_month</span>
+        Rendez-vous
+      </a>
+      <button
+        class="burger"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Ouvrir le menu"
+      >
+        <span class="material-icons-round" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div
+  class="nav-drawer"
+  [class.open]="menuOpen()"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navigation"
+>
+  <div class="drawer-header">
+    <div class="drawer-brand">
+      <img src="/images/logo.png" alt="Laura Medical Center" class="drawer-logo">
+      <span class="drawer-title">Laura Medical</span>
+    </div>
+    <button class="drawer-close" (click)="closeMenu()" aria-label="Fermer le menu">
+      <span class="material-icons-round" aria-hidden="true">close</span>
+    </button>
+  </div>
+
+  <div class="drawer-nav" role="navigation" aria-label="Navigation principale">
+    <ul role="list">
+      <li>
+        <a href="#accueil" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">home</span>
+          Accueil
+        </a>
+      </li>
+      <li>
+        <a href="#apropos" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">info</span>
+          À Propos
+        </a>
+      </li>
+      <li>
+        <a href="#services" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">medical_services</span>
+          Services
+        </a>
+      </li>
+      <li>
+        <a href="#equipe" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">groups</span>
+          Équipe
+        </a>
+      </li>
+      <li>
+        <a href="#equipement" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">biotech</span>
+          Équipement
+        </a>
+      </li>
+      <li>
+        <a href="#contact" (click)="closeMenu()">
+          <span class="material-icons-round" aria-hidden="true">call</span>
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="drawer-footer">
+    <a href="#contact" class="btn btn-primary drawer-cta" (click)="closeMenu()">
+      <span class="material-icons-round" aria-hidden="true">calendar_month</span>
+      Prendre Rendez-vous
+    </a>
+    <p class="drawer-hours">
+      <span class="material-icons-round" aria-hidden="true">schedule</span>
+      Ouvert 24h/24 &nbsp;·&nbsp; 7j/7
+    </p>
+  </div>
+</div>
+
+@if (menuOpen()) {
+  <div class="nav-backdrop" (click)="closeMenu()" aria-hidden="true"></div>
+}
+

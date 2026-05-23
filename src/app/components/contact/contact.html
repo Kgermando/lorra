@@ -1,0 +1,193 @@
+<section class="contact section" id="contact" aria-labelledby="contact-title">
+  <div class="contact-bg" aria-hidden="true"></div>
+
+  <div class="container contact-inner">
+
+    <!-- Left: Info -->
+    <div class="contact-info">
+      <p class="section-label">Nous Contacter</p>
+      <h2 class="section-title white" id="contact-title">
+        Votre santé,<br>
+        <span>notre priorité</span>
+      </h2>
+      <p class="contact-intro">
+        Prenez rendez-vous avec nos spécialistes ou contactez-nous pour toute question médicale. Notre équipe est disponible 24h/24, 7j/7 pour vous accompagner.
+      </p>
+
+      <ul class="info-list" role="list">
+        <li>
+          <div class="info-icon">
+            <span class="material-icons-round" aria-hidden="true">location_on</span>
+          </div>
+          <div>
+            <strong>Adresse</strong>
+            <span>4005 Av. Militant, Funa C/<br>Barumbu, Kinshasa</span>
+          </div>
+        </li>
+        <li>
+          <div class="info-icon">
+            <span class="material-icons-round" aria-hidden="true">phone</span>
+          </div>
+          <div>
+            <strong>Téléphone</strong>
+            <a href="tel:+00000000000">+00 00 000 0000</a>
+          </div>
+        </li>
+        <li>
+          <div class="info-icon">
+            <span class="material-icons-round" aria-hidden="true">mail</span>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:contact@laura-medical.com">contact&#64;laura-medical.com</a>
+          </div>
+        </li>
+        <li>
+          <div class="info-icon">
+            <span class="material-icons-round" aria-hidden="true">schedule</span>
+          </div>
+          <div>
+            <strong>Horaires</strong>
+            <span>Ouvert 24h/24 · 7j/7</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="emergency-card">
+        <span class="material-icons-round" aria-hidden="true">emergency</span>
+        <div>
+          <strong>Urgences médicales</strong>
+          <p>Disponibles en permanence pour toute urgence</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form-wrap">
+      @if (success()) {
+        <div class="success-msg" role="alert">
+          <span class="material-icons-round" aria-hidden="true">check_circle</span>
+          <div>
+            <strong>Demande envoyée !</strong>
+            <p>Nous vous contacterons très prochainement pour confirmer votre rendez-vous.</p>
+          </div>
+        </div>
+      }
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="contact-form"
+        novalidate
+        aria-label="Formulaire de rendez-vous"
+      >
+        <h3 class="form-title">Prendre un Rendez-vous</h3>
+
+        <div class="form-row">
+          <div class="form-group" [class.has-error]="hasError('name')">
+            <label for="name">
+              <span class="material-icons-round" aria-hidden="true">person</span>
+              Nom complet <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Votre nom complet"
+              autocomplete="name"
+            >
+            @if (hasError('name')) {
+              <span class="error-msg" role="alert">Le nom est requis (min. 2 caractères)</span>
+            }
+          </div>
+
+          <div class="form-group" [class.has-error]="hasError('phone')">
+            <label for="phone">
+              <span class="material-icons-round" aria-hidden="true">phone</span>
+              Téléphone <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="+00 00 000 0000"
+              autocomplete="tel"
+            >
+            @if (hasError('phone')) {
+              <span class="error-msg" role="alert">Numéro de téléphone invalide</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" [class.has-error]="hasError('email')">
+            <label for="email">
+              <span class="material-icons-round" aria-hidden="true">mail</span>
+              Email <span class="optional">(optionnel)</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="votre@email.com"
+              autocomplete="email"
+            >
+            @if (hasError('email')) {
+              <span class="error-msg" role="alert">Adresse email invalide</span>
+            }
+          </div>
+
+          <div class="form-group" [class.has-error]="hasError('service')">
+            <label for="service">
+              <span class="material-icons-round" aria-hidden="true">medical_services</span>
+              Service souhaité <span aria-hidden="true">*</span>
+            </label>
+            <select id="service" formControlName="service">
+              <option value="" disabled>Sélectionner un service</option>
+              @for (svc of services; track svc) {
+                <option [value]="svc">{{ svc }}</option>
+              }
+            </select>
+            @if (hasError('service')) {
+              <span class="error-msg" role="alert">Veuillez sélectionner un service</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-group" [class.has-error]="hasError('message')">
+          <label for="message">
+            <span class="material-icons-round" aria-hidden="true">chat</span>
+            Message <span aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="message"
+            formControlName="message"
+            placeholder="Décrivez brièvement votre motif de consultation..."
+            rows="4"
+          ></textarea>
+          @if (hasError('message')) {
+            <span class="error-msg" role="alert">Le message est requis (min. 10 caractères)</span>
+          }
+        </div>
+
+        @if (errorMsg()) {
+          <div class="error-banner" role="alert">
+            <span class="material-icons-round" aria-hidden="true">error_outline</span>
+            <p>{{ errorMsg() }}</p>
+          </div>
+        }
+
+        <button type="submit" class="btn btn-primary submit-btn" [disabled]="loading()">
+          @if (loading()) {
+            <span class="material-icons-round spin" aria-hidden="true">sync</span>
+            Envoi en cours…
+          } @else {
+            <span class="material-icons-round" aria-hidden="true">send</span>
+            Envoyer ma Demande
+          }
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>

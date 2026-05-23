@@ -1,0 +1,17 @@
+<section class="stats-section" id="stats" aria-label="Chiffres clés">
+  <div class="container">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-card stat-card--{{ stat.color }}">
+          <div class="stat-icon-wrap">
+            <span class="material-icons-round" aria-hidden="true">{{ stat.icon }}</span>
+          </div>
+          <div class="stat-content">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

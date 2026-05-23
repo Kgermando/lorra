@@ -1,0 +1,199 @@
+.team {
+  background: var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(198, 40, 40, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgba(46, 125, 50, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.team-header {
+  margin-bottom: 60px;
+  max-width: 680px;
+}
+
+.section-title.white { color: var(--white); }
+
+.section-subtitle.light { color: rgba(255, 255, 255, 0.6); }
+
+.team .section-label { color: #81c784; }
+.team .section-label::before { background: #81c784; }
+
+.team .section-title span { color: #ef9a9a; }
+
+/* Category */
+.team-category {
+  margin-bottom: 48px;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .material-icons-round {
+    font-size: 1.1rem;
+    color: var(--accent-light);
+  }
+}
+
+/* Grids */
+.team-grid {
+  display: grid;
+  gap: 28px;
+
+  &--doctors { grid-template-columns: repeat(2, 1fr); }
+  &--nurses  { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Director featured card */
+.member-card--director {
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+
+  &:hover { border-color: rgba(255, 215, 0, 0.5); }
+
+  .member-img-wrap { height: 380px; }
+}
+
+.member-role-badge--director {
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+
+  .material-icons-round { color: #ffd700; }
+}
+
+/* Member card */
+.member-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+
+    .member-overlay { opacity: 1; }
+    .member-img { transform: scale(1.04); }
+  }
+}
+
+.member-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.member-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 22, 40, 0.8) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 24px;
+}
+
+.member-socials {
+  display: flex;
+  gap: 12px;
+
+  .material-icons-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    backdrop-filter: blur(8px);
+
+    &:hover { background: var(--accent); }
+  }
+}
+
+.member-info {
+  padding: 24px 26px;
+}
+
+.member-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: rgba(198, 40, 40, 0.2);
+  color: #ef9a9a;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+
+  .material-icons-round { font-size: 0.9rem; }
+
+  &.nurse {
+    background: rgba(46, 125, 50, 0.2);
+    color: #a5d6a7;
+  }
+}
+
+.member-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.member-specialty {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* CTA */
+.team-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .team-grid--doctors { grid-template-columns: 1fr; }
+  .team-grid--nurses  { grid-template-columns: 1fr; }
+  .member-card--director .member-img-wrap { height: 320px; }
+}

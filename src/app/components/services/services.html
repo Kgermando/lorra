@@ -1,0 +1,29 @@
+<section class="services section" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Ce que nous offrons</p>
+      <h2 class="section-title" id="services-title">
+        Nos <span>Services Médicaux</span>
+      </h2>
+      <p class="section-subtitle">
+        Un éventail complet de soins médicaux de haute qualité pour répondre à tous vos besoins de santé, avec une équipe dédiée à votre bien-être.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <article class="service-card service-card--{{ service.color }}">
+          <div class="service-icon-wrap">
+            <span class="material-icons-round" aria-hidden="true">{{ service.icon }}</span>
+          </div>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-desc">{{ service.description }}</p>
+          <a href="#contact" class="service-link">
+            En savoir plus
+            <span class="material-icons-round" aria-hidden="true">arrow_forward</span>
+          </a>
+        </article>
+      }
+    </div>
+  </div>
+</section>
