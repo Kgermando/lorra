@@ -16,7 +16,7 @@ export class ContactComponent {
   protected readonly submitted = signal(false);
   protected readonly success = signal(false);
   protected readonly loading = signal(false);
-  protected readonly errorMsg = signal<string | null>(null);
+  protected readonly errorMsg = signal(false);
 
   protected readonly form = this.fb.group({
     name:    ['', [Validators.required, Validators.minLength(2)]],
@@ -45,7 +45,7 @@ export class ContactComponent {
 
   protected onSubmit(): void {
     this.submitted.set(true);
-    this.errorMsg.set(null);
+    this.errorMsg.set(false);
     if (this.form.valid) {
       this.loading.set(true);
       this.http.post('/api/contact', this.form.value).subscribe({
@@ -57,7 +57,7 @@ export class ContactComponent {
         },
         error: () => {
           this.loading.set(false);
-          this.errorMsg.set('Une erreur est survenue. Veuillez réessayer ou nous appeler directement.');
+          this.errorMsg.set(true);
         }
       });
     }
