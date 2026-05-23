@@ -15,7 +15,8 @@ export class FooterComponent {
     { label: 'Services',      href: '#services'    },
     { label: 'Notre Équipe',  href: '#equipe'      },
     { label: 'Équipement',    href: '#equipement'  },
-    { label: 'Contact',       href: '#contact'     }
+    { label: 'Galerie',        href: '#galerie'     },
+    { label: 'Contact',        href: '#contact'     }
   ];
 
   protected readonly services = [

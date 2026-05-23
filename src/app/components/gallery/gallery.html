@@ -1,0 +1,89 @@
+<section class="gallery section" id="galerie" aria-labelledby="gallery-title">
+  <div class="container">
+
+    <div class="gallery-header">
+      <p class="section-label">Nos Installations</p>
+      <h2 class="section-title" id="gallery-title">
+        Notre <span>Galerie</span>
+      </h2>
+      <p class="section-subtitle">
+        Découvrez nos infrastructures modernes et l'environnement de soins chaleureux
+        que nous mettons à votre service.
+      </p>
+    </div>
+
+    <div class="gallery-grid" role="list">
+      @for (image of images; track image.src; let i = $index) {
+        <button
+          class="gallery-item"
+          role="listitem"
+          type="button"
+          [attr.aria-label]="'Agrandir : ' + image.alt"
+          (click)="openLightbox(i)"
+        >
+          <img
+            [src]="image.src"
+            [alt]="image.alt"
+            class="gallery-img"
+            loading="lazy"
+            width="400"
+            height="300"
+          >
+          <div class="gallery-overlay" aria-hidden="true">
+            <span class="material-icons-round">zoom_in</span>
+          </div>
+        </button>
+      }
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  @if (activeImage()) {
+    <div
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="activeImage()!.alt"
+      (click)="closeLightbox()"
+    >
+      <button
+        class="lb-close"
+        type="button"
+        aria-label="Fermer la galerie"
+        (click)="closeLightbox()"
+      >
+        <span class="material-icons-round">close</span>
+      </button>
+
+      <span class="lb-counter" aria-live="polite">{{ activeCounter() }}</span>
+
+      <button
+        class="lb-nav lb-nav--prev"
+        type="button"
+        aria-label="Image précédente"
+        (click)="$event.stopPropagation(); prev()"
+      >
+        <span class="material-icons-round">chevron_left</span>
+      </button>
+
+      <div class="lb-img-wrap" (click)="$event.stopPropagation()">
+        <img
+          [src]="activeImage()!.src"
+          [alt]="activeImage()!.alt"
+          class="lb-img"
+        >
+        <p class="lb-caption">{{ activeImage()!.alt }}</p>
+      </div>
+
+      <button
+        class="lb-nav lb-nav--next"
+        type="button"
+        aria-label="Image suivante"
+        (click)="$event.stopPropagation(); next()"
+      >
+        <span class="material-icons-round">chevron_right</span>
+      </button>
+    </div>
+  }
+</section>

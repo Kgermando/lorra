@@ -6,6 +6,7 @@ import { ServicesComponent }  from './components/services/services';
 import { AboutComponent }     from './components/about/about';
 import { TeamComponent }      from './components/team/team';
 import { EquipmentComponent } from './components/equipment/equipment';
+import { GalleryComponent }   from './components/gallery/gallery';
 import { ContactComponent }   from './components/contact/contact';
 import { FooterComponent }    from './components/footer/footer';
 
@@ -19,6 +20,7 @@ import { FooterComponent }    from './components/footer/footer';
     AboutComponent,
     TeamComponent,
     EquipmentComponent,
+    GalleryComponent,
     ContactComponent,
     FooterComponent
   ],
