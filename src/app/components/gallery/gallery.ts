@@ -41,6 +41,13 @@ export class GalleryComponent {
     { src: '/galeries/WhatsApp%20Image%202026-05-23%20at%2014.25.09.jpeg',       alt: 'Lorra Medical Centre – Installations (13)' },
     { src: '/galeries/WhatsApp%20Image%202026-05-23%20at%2014.25.10%20(1).jpeg', alt: 'Lorra Medical Centre – Installations (14)' },
     { src: '/galeries/WhatsApp%20Image%202026-05-23%20at%2014.25.10.jpeg',       alt: 'Lorra Medical Centre – Installations (15)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.08.jpeg',       alt: 'Lorra Medical Centre – Installations (16)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.09%20(1).jpeg', alt: 'Lorra Medical Centre – Installations (17)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.09.jpeg',       alt: 'Lorra Medical Centre – Installations (18)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.10%20(1).jpeg', alt: 'Lorra Medical Centre – Installations (19)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.10%20(2).jpeg', alt: 'Lorra Medical Centre – Installations (20)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.10.jpeg',       alt: 'Lorra Medical Centre – Installations (21)' },
+    { src: '/galeries/WhatsApp%20Image%202026-08-16%20at%2014.50.11.jpeg',       alt: 'Lorra Medical Centre – Installations (22)' },
   ];
 
   protected readonly activeIndex = signal<number | null>(null);
